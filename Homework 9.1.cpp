@@ -13,33 +13,48 @@ public:
 		denominator_ = denominator;
 	}
 	bool operator==(const Fraction& f) {
-		if (numerator_ == f.numerator_) {
-			if (denominator_ == f.denominator_) {
-				return true;
-			}
+		int n1 = numerator_, d1 = denominator_, n2 = f.numerator_, d2 = f.denominator_;
+		if (d1 != d2) {
+			n1 = n1 * d2;
+			n2 = n2 * d1;
+			d1 = d1 * d2;
+			d2 = d1;
 		}
-		return false;
+		if (n1 == n2) {
+			return true;
+		}
+		else return false;
 	}
 	bool operator!=(const Fraction& f) {
 		return !(*this == f);
 	}
 
 	bool operator<(const Fraction& f) {
-		if (numerator_ < f.numerator_) {
-			if (denominator_ < f.denominator_) {
-				return true;
-			}
+		int n1 = numerator_, d1 = denominator_, n2 = f.numerator_, d2 = f.denominator_;
+		if (d1 != d2) {
+			n1 = n1 * d2;
+			n2 = n2 * d1;
+			d1 = d1 * d2;
+			d2 = d1;
 		}
-		return false;
+		if (n1 < n2) {
+			return true;
+		}
+		else return false;
 	}
 
 	bool operator>(const Fraction& f) {
-		if (numerator_ > f.numerator_) {
-			if (denominator_ > f.denominator_) {
-				return true;
-			}
+		int n1 = numerator_, d1 = denominator_, n2 = f.numerator_, d2 = f.denominator_;
+		if (d1 != d2) {
+			n1 = n1 * d2;
+			n2 = n2 * d1;
+			d1 = d1 * d2;
+			d2 = d1;
 		}
-		return false;
+		if (n1 > n2) {
+			return true;
+		}
+		else return false;
 	}
 
 	bool operator<=(const Fraction& f) {
@@ -80,8 +95,8 @@ int main()
 
 	std::cout << std::endl;
 
-	Auto A1(6, 11);
-	Auto A2(4, 3);
+	Auto A1(4, 3);
+	Auto A2(6, 11);
 
 	std::cout << "A1" << ((A1 == A2) ? " == " : " not == ") << "A2" << '\n';
 	std::cout << "A1" << ((A1 != A2) ? " != " : " not != ") << "A2" << '\n';
